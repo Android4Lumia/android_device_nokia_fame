@@ -1,0 +1,10 @@
+type led_deamon, domain;
+type led_deamon_exec, exec_type, file_type;
+
+allow led_deamon system_data_file:dir { write add_name };
+allow led_deamon system_data_file:fifo_file { read create write open };
+allow led_deamon sysfs_wake_lock:file rw_file_perms;
+allow led_deamon led_deamon_data_file:fifo_file rw_file_perms;
+allow led_deamon sysfs:file write;
+
+init_daemon_domain(led_deamon)

@@ -1,0 +1,2 @@
+gsm.version.baseband		u:object_r:baseband_prop:s0
+persist.tareset.notfirstboot    u:object_r:updatemiscta_prop:s0

@@ -1,0 +1,5 @@
+allow qti_init_shell baseband_prop:property_service set;
+allow qti_init_shell modem_device:blk_file r_file_perms;
+allow qti_init_shell rootfs:file execute;
+allow qti_init_shell apk_data_file:dir { write add_name };
+allow qti_init_shell apk_data_file:file { write create };

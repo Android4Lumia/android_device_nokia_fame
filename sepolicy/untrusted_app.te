@@ -1,0 +1,1 @@
+allow untrusted_app storage_stub_file:dir getattr;

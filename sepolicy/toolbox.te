@@ -1,0 +1,1 @@
+allow toolbox init:fifo_file { write getattr };

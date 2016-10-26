@@ -1,0 +1,3 @@
+type modem_device, dev_type;
+
+type dbgcfgtool_device, dev_type;

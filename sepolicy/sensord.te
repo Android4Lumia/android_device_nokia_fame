@@ -1,0 +1,13 @@
+type sensord, domain;
+type sensord_exec, exec_type, file_type;
+init_daemon_domain(sensord)
+
+type_transition sensord system_data_file:{ dir file } sensord_data_file;
+
+allow sensord input_device:dir search;
+allow sensord input_device:chr_file { read open };
+allow sensord sysfs:file write;
+allow sensord system_data_file:dir create_dir_perms;
+allow sensord sensord_data_file:fifo_file create_file_perms;
+allow sensord sensord_data_file:file create_file_perms;
+allow sensord sensord_data_file:dir create_dir_perms;

@@ -1,0 +1,81 @@
+# Audio
+lib/libaudcal.so
+
+# Camera
+bin/mm-qcamera-daemon
+lib/hw/camera.msm8960.so:lib/hw/camera.vendor.msm8960.so
+lib/libchromatix_s5k4e1_2nd_default_video_1.so
+lib/libchromatix_s5k4e1_2nd_default_video.so
+lib/libchromatix_s5k4e1_2nd_preview_1.so
+lib/libchromatix_s5k4e1_2nd_preview.so
+lib/libchromatix_s5k4e1_default_video_1.so
+lib/libchromatix_s5k4e1_default_video.so
+lib/libchromatix_s5k4e1_preview_1.so
+lib/libchromatix_s5k4e1_preview.so
+lib/libmmcamera_3a_legacy.so
+lib/libmmcamera_faceproc.so
+lib/libmmcamera_frameproc.so
+lib/libmmcamera_imx091.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_plugin.so
+lib/libmmcamera_statsproc31.so
+lib/libmmjpeg_interface.so
+lib/libmorpho_denoiser.so
+lib/libmorpho_easy_hdr.so
+lib/libmorpho_edit_engine.so
+lib/libmorpho_fdw.so
+lib/libmorpho_hdr_checker.so
+lib/libmorpho_image_stabilizer3.so
+lib/libmorpho_object_tracker2.so
+lib/libmorpho_posture_detect.so
+lib/libmorpho_scene_detector.so
+lib/libmorpho_super_resolution.so
+lib/liboemcamera.so
+
+# DxHDCP firmware
+etc/firmware/dxhdcp2.b00
+etc/firmware/dxhdcp2.b01
+etc/firmware/dxhdcp2.b02
+etc/firmware/dxhdcp2.b03
+etc/firmware/dxhdcp2.flist
+etc/firmware/dxhdcp2.mdt
+
+# Lights
+bin/led_deamon
+lib/hw/lights.msm8960.so:lib/hw/lights.vendor.msm8960.so
+
+# MultiMedia
+lib/libimage-jpeg-enc-omx-comp.so
+
+# NFC
+lib/hw/nfc.msm8960.so
+vendor/firmware/libpn544_fw.so
+
+# Sensors
+bin/sensord
+lib/hw/sensors.default.so
+
+# TA
+bin/taimport
+bin/ta_qmi_service
+bin/updatemiscta
+lib/libmiscta.so
+lib/libta.so
+-sbin/tad_static:rootfs
+
+# Thermal
+bin/thermald
+
+# Trustzone firmware
+etc/firmware/tzlibasb.b00
+etc/firmware/tzlibasb.b01
+etc/firmware/tzlibasb.b02
+etc/firmware/tzlibasb.b03
+etc/firmware/tzlibasb.flist
+etc/firmware/tzlibasb.mdt
+etc/firmware/tzsuntory.b00
+etc/firmware/tzsuntory.b01
+etc/firmware/tzsuntory.b02
+etc/firmware/tzsuntory.b03
+etc/firmware/tzsuntory.flist
+etc/firmware/tzsuntory.mdt

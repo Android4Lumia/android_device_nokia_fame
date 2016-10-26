@@ -1,0 +1,5 @@
+# CM Hardware
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true

@@ -1,0 +1,297 @@
+# Copyright (c) 2012, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+on early-init
+    mkdir /firmware 0771 system system
+    symlink /data/tombstones /tombstones
+    chmod 666 /proc/cmdline
+
+on init
+    write /sys/block/zram0/comp_algorithm lz4
+    write /proc/sys/vm/page-cluster 0
+
+on fs
+    mount_all fstab.qcom
+    swapon_all fstab.qcom
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/persist
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
+    restorecon_recursive /persist
+
+    mkdir /lta-label 0555 system system
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
+    chown system system /lta-label
+    chmod 0555 /lta-label
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/modem
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
+
+    # TA support
+    #class_start trimarea
+    #start tad_static
+    #exec /system/bin/taimport
+    
+    #start ta_qmi_service
+
+on post-fs
+    mkdir /dev/socket/suntory 0755 system system
+
+on boot
+   start qcamerasvr
+
+    chown system system /sys/class/backlight/msmfb_bl0/brightness
+    chown system system /sys/class/backlight/msmfb_bl0/max_brightness
+    chmod 0600 /sys/class/backlight/msmfb_bl0/brightness
+    chmod 0600 /sys/class/backlight/msmfb_bl0/max_brightness
+
+    # Add Sensors file node
+    chown system system /sys/class/input/input3/bandwidth
+    chown system system /sys/class/input/input3/debug
+    chown system system /sys/class/input/input3/delay
+    chown system system /sys/class/input/input3/enable
+    chown system system /sys/class/input/input3/interrupt
+    chown system system /sys/class/input/input3/op_mode
+    chown system system /sys/class/input/input3/mode
+    chown system system /sys/class/input/input3/range
+    chown system system /sys/class/input/input3/reg
+    chown system system /sys/class/input/input3/sensitivity
+    chown system system /sys/class/input/input3/update
+    chown system system /sys/class/input/input3/value
+    chown system system /sys/class/input/input3/rept_xy
+    chown system system /sys/class/input/input3/rept_z
+    chown system system /sys/class/input/input3/test
+    chown system system /sys/class/input/input3/odr
+    chown system system /sys/class/input/input3/pd
+    chown system system /sys/class/input/input3/axi
+    chown system system /sys/class/input/input3/count
+    chown system system /sys/class/input/input3/selftest
+
+    chown system system /sys/class/input/input4/bandwidth
+    chown system system /sys/class/input/input4/debug
+    chown system system /sys/class/input/input4/delay
+    chown system system /sys/class/input/input4/enable
+    chown system system /sys/class/input/input4/interrupt
+    chown system system /sys/class/input/input4/op_mode
+    chown system system /sys/class/input/input4/mode
+    chown system system /sys/class/input/input4/range
+    chown system system /sys/class/input/input4/reg
+    chown system system /sys/class/input/input4/sensitivity
+    chown system system /sys/class/input/input4/update
+    chown system system /sys/class/input/input4/value
+    chown system system /sys/class/input/input4/rept_xy
+    chown system system /sys/class/input/input4/rept_z
+    chown system system /sys/class/input/input4/test
+    chown system system /sys/class/input/input4/odr
+    chown system system /sys/class/input/input4/pd
+    chown system system /sys/class/input/input4/axi
+    chown system system /sys/class/input/input4/count
+    chown system system /sys/class/input/input4/selftest
+
+
+    chown system system /sys/class/input/input5/bandwidth
+    chown system system /sys/class/input/input5/debug
+    chown system system /sys/class/input/input5/delay
+    chown system system /sys/class/input/input5/enable
+    chown system system /sys/class/input/input5/interrupt
+    chown system system /sys/class/input/input5/op_mode
+    chown system system /sys/class/input/input5/mode
+    chown system system /sys/class/input/input5/range
+    chown system system /sys/class/input/input5/reg
+    chown system system /sys/class/input/input5/sensitivity
+    chown system system /sys/class/input/input5/update
+    chown system system /sys/class/input/input5/value
+    chown system system /sys/class/input/input5/rept_xy
+    chown system system /sys/class/input/input5/rept_z
+    chown system system /sys/class/input/input5/test
+    chown system system /sys/class/input/input5/odr
+    chown system system /sys/class/input/input5/pd
+    chown system system /sys/class/input/input5/axi
+    chown system system /sys/class/input/input5/count
+    chown system system /sys/class/input/input5/selftest
+
+    chown system system /sys/class/input/input6/bandwidth
+    chown system system /sys/class/input/input6/debug
+    chown system system /sys/class/input/input6/delay
+    chown system system /sys/class/input/input6/enable
+    chown system system /sys/class/input/input6/interrupt
+    chown system system /sys/class/input/input6/op_mode
+    chown system system /sys/class/input/input6/mode
+    chown system system /sys/class/input/input6/range
+    chown system system /sys/class/input/input6/reg
+    chown system system /sys/class/input/input6/sensitivity
+    chown system system /sys/class/input/input6/update
+    chown system system /sys/class/input/input6/value
+    chown system system /sys/class/input/input6/rept_xy
+    chown system system /sys/class/input/input6/rept_z
+    chown system system /sys/class/input/input6/test
+    chown system system /sys/class/input/input6/count
+    chown system system /sys/class/input/input6/selftest
+
+
+    chown system system /sys/class/input/input7/bandwidth
+    chown system system /sys/class/input/input7/debug
+    chown system system /sys/class/input/input7/delay
+    chown system system /sys/class/input/input7/enable
+    chown system system /sys/class/input/input7/interrupt
+    chown system system /sys/class/input/input7/op_mode
+    chown system system /sys/class/input/input7/mode
+    chown system system /sys/class/input/input7/range
+    chown system system /sys/class/input/input7/reg
+    chown system system /sys/class/input/input7/sensitivity
+    chown system system /sys/class/input/input7/update
+    chown system system /sys/class/input/input7/value
+    chown system system /sys/class/input/input7/rept_xy
+    chown system system /sys/class/input/input7/rept_z
+    chown system system /sys/class/input/input7/test
+    chown system system /sys/class/input/input7/count
+    chown system system /sys/class/input/input7/selftest
+
+    chown system system /data/misc/sensor/profile_calib_a
+    chown system system /data/misc/sensor/profile_calib_m
+
+    chown system system /sys/class/input/input6/ls_k_data
+    chown system system /sys/class/input/input6/ps_thd
+    chown system system /sys/class/input/input6/ps_conf
+
+    chown system system /sys/class/touch/rmi4/control
+    chown system system /sys/class/touch/rmi4/info
+
+#CONN-EH-PCCOMPANION-01+{
+    chmod 0660 /sys/devices/platform/msm_hsusb/gadget/lun1/file
+    chown usb usb /sys/devices/platform/msm_hsusb/gadget/lun1/file
+#CONN-EH-PCCOMPANION-01+}
+
+    chown system system /sys/class/input/input1/imagesize
+    chown system system /sys/class/input/input1/data
+    chown system system /sys/class/input/input1/rmidev/address
+    chown system system /sys/class/input/input1/rmidev/open
+    chown system system /sys/class/input/input1/rmidev/release
+    chown system system /sys/class/input/input1/reset
+    chown system system /sys/class/input/input1/rmidev/data
+    chown system system /sys/class/input/input1/readconfig
+    chown system system /sys/class/input/input1/0dbutton
+    chown system system /sys/class/input/input1/full_pm_cycle
+    chown system system /sys/class/input/input1/configarea
+    chown system system /sys/class/input/input1/rmidev/length
+    chown system system /sys/class/input/input1/doreflash
+    chown system system /sys/class/input/input1/writeconfig
+
+    chown system system /dev/rmi0
+
+    chown root system /sys/class/timed_output/vibrator/level
+    chown root system /sys/class/graphics/fb0/kcal
+    chmod 0664 /sys/class/graphics/fb0/kcal
+    chmod 0664 /sys/class/timed_output/vibrator/level
+    restorecon /sys/class/timed_output/vibrator/level
+    restorecon /sys/class/graphics/fb0/kcal
+
+on post-fs-data
+   mkdir /tombstones/modem 0771 system system
+   mkdir /tombstones/lpass 0771 system system
+   mkdir /tombstones/wcnss 0771 system system
+   mkdir /tombstones/dsps 0771 system system
+   mkdir /tombstones/mdm 0771 system system
+   mkdir /tombstones/mdm2 0771 system system
+
+    # NFC porting
+    setprop ro.nfc.port "I2C"
+    chmod 0600 /dev/pn544
+    chown nfc nfc /dev/pn544
+
+    chown root radio /sys/module/pm8921_charger/parameters/call_state
+    chmod 0660 /sys/module/pm8921_charger/parameters/call_state
+
+    chown system compass /data/misc/sensor
+
+service led-deamon /system/bin/led_deamon
+    class main
+    user system
+    group system
+
+service sensord /system/bin/sensord
+    class late_start
+    user system
+    group compass misc input
+    oneshot
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+        class late_start
+        user camera
+        group camera system inet input graphics net_bt_stack
+
+service thermald /system/bin/thermald
+   class main
+   user root
+   group root
+
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+   class main
+   user root
+   disabled
+
+service qseecomd /system/bin/qseecomd
+   class late_start
+   user system
+   group system
+
+service time_daemon /system/bin/time_daemon
+   class late_start
+   user root
+   group root
+
+service ta_qmi_service /system/bin/ta_qmi_service
+    class late_start
+    user root
+    disabled
+
+service tad /sbin/tad_static /dev/block/mmcblk0 1,16
+    class trimarea
+    user root
+    group root 	
+    socket tad stream 666 system system
+    class core
+    seclabel u:r:tad_static:s0
+
+service updatemiscta /system/bin/updatemiscta
+    class main
+    user root
+    oneshot
+
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi
+    oneshot
+
+service bbset /system/bin/sh /system/etc/init.qcom.baseband.sh
+     class late_start
+     user root
+     seclabel u:r:qti_init_shell:s0
+     oneshot

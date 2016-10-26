@@ -1,0 +1,11 @@
+type taimport, domain;
+type taimport_exec, exec_type, file_type;
+
+init_daemon_domain(taimport)
+
+allow taimport init:unix_stream_socket connectto;
+allow taimport tad_static:unix_stream_socket connectto;
+allow taimport self:capability dac_override;
+allow taimport tad_socket:sock_file write;
+allow taimport system_data_file:dir { create write add_name };
+

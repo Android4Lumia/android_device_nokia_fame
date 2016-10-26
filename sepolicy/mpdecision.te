@@ -1,0 +1,1 @@
+allow mpdecision socket_device:sock_file create_file_perms;

@@ -1,0 +1,143 @@
+# ADSP
+lib/libadsprpc.so
+
+# Audio
+lib/libacdbloader.so
+
+# Bluetooth
+bin/btnvtool
+bin/hci_qcomm_init
+vendor/lib/libbtnv.so
+
+# Camera
+lib/libmmcamera_image_stab.so
+lib/libmmcamera_hdr_lib.so
+lib/libmmcamera_wavelet_lib.so
+lib/libmmcamera_tintless_algo.so
+lib/libmmcamera_tintless_wrapper.so
+
+# Data
+bin/netmgrd
+lib/libdsi_netctrl.so
+lib/libdsutils.so
+lib/libnetmgr.so
+lib/libqdi.so
+lib/libqdp.so
+
+# Diag
+vendor/lib/libdiag.so
+
+# FM
+bin/fm_qsoc_patches
+
+# GPS
+lib/libloc_api_v02.so
+lib/libloc_ds_api.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/liblocationservice.so
+vendor/lib/libquipc_os_api.so
+vendor/lib/libulp2.so
+
+# Graphics
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
+vendor/lib/egl/eglsubAndroid.so
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libq3dtools_adreno.so
+vendor/lib/libadreno_utils.so
+vendor/lib/libbccQTI.so
+vendor/lib/libc2d30-a3xx.so
+vendor/lib/libC2D2.so
+vendor/lib/libCB.so
+vendor/lib/libgsl.so
+vendor/lib/libllvm-qcom.so
+vendor/lib/librs_adreno.so
+vendor/lib/librs_adreno_sha1.so
+vendor/lib/libRSDriver_adreno.so
+vendor/lib/libsc-a3xx.so
+
+# MultiMedia
+lib/libDivxDrm.so
+lib/libExtendedExtractor.so
+lib/libI420colorconvert.so
+lib/libSHIMDivxDrm.so
+lib/libgemini.so
+lib/libimage-omx-common.so
+lib/libmercury.so
+lib/libmmjpeg.so
+lib/libmmmpod.so
+lib/libmmparser.so
+lib/libmmstillomx.so
+lib/libmmosal.so
+lib/libmm-audio-resampler.so
+lib/libmm-color-convertor.so
+
+# Perf
+bin/mpdecision
+vendor/lib/libqti-perfd-client.so
+
+# QMI
+bin/irsc_util
+bin/qmuxd
+lib/lib_dlb_msd.so
+lib/libidl.so
+lib/libqcci_legacy.so
+lib/libqmi_client_qmux.so
+lib/libqmi_csvt_srvc.so
+lib/libqminvapi.so
+lib/libqmiservices.so
+lib/libqmi.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
+
+# QCRIL
+lib/libril-qc-qmi-1.so
+lib/libril-qcril-hook-oem.so
+
+# RIL
+bin/rild
+lib/libril.so
+
+# RemoteFS
+bin/rmt_storage
+
+# Security
+bin/qseecomd
+lib/libQSEEComAPI.so
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/libdrmdiag.so
+
+# UI
+vendor/lib/libuiblur.so
+
+# Time services
+-app/TimeService/TimeService.apk
+bin/time_daemon
+vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
+
+# VIDC firmware
+etc/firmware/vidc_1080p.fw
+etc/firmware/vidc.b00
+etc/firmware/vidc.b01
+etc/firmware/vidc.b02
+etc/firmware/vidc.b03
+etc/firmware/vidcfw.elf
+etc/firmware/vidc.mdt
+
+# Widevine DRM
+etc/permissions/com.google.widevine.software.drm.xml
+-framework/com.google.widevine.software.drm.jar
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/mediadrm/libwvdrmengine.so
