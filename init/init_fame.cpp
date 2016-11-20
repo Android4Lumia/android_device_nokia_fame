@@ -84,13 +84,35 @@ void vendor_load_properties()
 			if (access(PRODUCT_DAT, R_OK) == 0) {
 				if ((fp = fopen(PRODUCT_DAT, "r")) != NULL) {
 					if (fgets(modelnumber, sizeof(modelnumber), fp) != NULL) {
+						if (strcmp(modelnumber, "TYPE:RM-913\n") == 0) {
+							property_set("ro.product.device", "fame_cmcc");
+							property_set("ro.product.model", "fame_cmcc");
+							property_set("ro.product.name", "Lumia 520 China");
+						}
 						if (strcmp(modelnumber, "TYPE:RM-914\n") == 0) {
 							property_set("ro.product.device", "fame");
 							property_set("ro.product.model", "fame");
+							property_set("ro.product.name", "Lumia 520");
+						}
+						if (strcmp(modelnumber, "TYPE:RM-915\n") == 0) {
+							property_set("ro.product.device", "fame_lta");
+							property_set("ro.product.model", "fame_lta");
+							property_set("ro.product.name", "Lumia 520");
+						}
+						if (strcmp(modelnumber, "TYPE:RM-917\n") == 0) {
+							property_set("ro.product.device", "fame_tmo");
+							property_set("ro.product.model", "fame_tmo");
+							property_set("ro.product.name", "Lumia 521");
+						}
+						if (strcmp(modelnumber, "TYPE:RM-997\n") == 0) {
+							property_set("ro.product.device", "glee_cmcc");
+							property_set("ro.product.model", "glee_cmcc");
+							property_set("ro.product.name", "Lumia 526");
 						}
 						if (strcmp(modelnumber, "TYPE:RM-998\n") == 0) {
 							property_set("ro.product.device", "glee");
 							property_set("ro.product.model", "glee");
+							property_set("ro.product.name", "Lumia 525");
 						}
 					}
 					fclose(fp);
