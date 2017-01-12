@@ -6,5 +6,5 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
-TARGET_KERNEL_CONFIG := cyanogenmod_fame_defconfig
+TARGET_KERNEL_CONFIG := lineageos_fame_defconfig
 
