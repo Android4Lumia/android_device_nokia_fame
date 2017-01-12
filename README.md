@@ -12,4 +12,4 @@ Battery | 1430  mAh
 Display | 4.0" 800 x 480 px
 Camera  | 5MPx
 
-This branch is for building CyanogenMod 14.1 (or Android Marshmallow 7.1 AOSP based roms) ROMS.
+This branch is for building LineageOS 14.1 (or Android Marshmallow 7.1 AOSP based roms) ROMS.
