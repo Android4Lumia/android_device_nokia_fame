@@ -13,7 +13,7 @@ else
   ifneq ($(filter msm8916 msm8909,$(TARGET_BOARD_PLATFORM)),)
     LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
   else
-    LOCAL_MODULE := sensors.msm8930
+    LOCAL_MODULE := sensors.msm8960
   endif
 endif
 
