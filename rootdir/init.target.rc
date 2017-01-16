@@ -71,6 +71,27 @@ on boot
     chmod 0600 /sys/class/backlight/msmfb_bl0/max_brightness
 
     # Add Sensors file node
+    chown system system /sys/class/input/input2/bandwidth
+    chown system system /sys/class/input/input2/debug
+    chown system system /sys/class/input/input2/delay
+    chown system system /sys/class/input/input2/enable
+    chown system system /sys/class/input/input2/interrupt
+    chown system system /sys/class/input/input2/op_mode
+    chown system system /sys/class/input/input2/mode
+    chown system system /sys/class/input/input2/range
+    chown system system /sys/class/input/input2/reg
+    chown system system /sys/class/input/input2/sensitivity
+    chown system system /sys/class/input/input2/update
+    chown system system /sys/class/input/input2/value
+    chown system system /sys/class/input/input2/rept_xy
+    chown system system /sys/class/input/input2/rept_z
+    chown system system /sys/class/input/input2/test
+    chown system system /sys/class/input/input2/odr
+    chown system system /sys/class/input/input2/pd
+    chown system system /sys/class/input/input2/axi
+    chown system system /sys/class/input/input2/count
+    chown system system /sys/class/input/input2/selftest
+    
     chown system system /sys/class/input/input3/bandwidth
     chown system system /sys/class/input/input3/debug
     chown system system /sys/class/input/input3/delay
@@ -187,20 +208,20 @@ on boot
     chown usb usb /sys/devices/platform/msm_hsusb/gadget/lun1/file
 #CONN-EH-PCCOMPANION-01+}
 
-    chown system system /sys/class/input/input1/imagesize
-    chown system system /sys/class/input/input1/data
-    chown system system /sys/class/input/input1/rmidev/address
-    chown system system /sys/class/input/input1/rmidev/open
-    chown system system /sys/class/input/input1/rmidev/release
-    chown system system /sys/class/input/input1/reset
-    chown system system /sys/class/input/input1/rmidev/data
-    chown system system /sys/class/input/input1/readconfig
-    chown system system /sys/class/input/input1/0dbutton
-    chown system system /sys/class/input/input1/full_pm_cycle
-    chown system system /sys/class/input/input1/configarea
-    chown system system /sys/class/input/input1/rmidev/length
-    chown system system /sys/class/input/input1/doreflash
-    chown system system /sys/class/input/input1/writeconfig
+    chown system system /sys/class/input/input0/imagesize
+    chown system system /sys/class/input/input0/data
+    chown system system /sys/class/input/input0/rmidev/address
+    chown system system /sys/class/input/input0/rmidev/open
+    chown system system /sys/class/input/input0/rmidev/release
+    chown system system /sys/class/input/input0/reset
+    chown system system /sys/class/input/input0/rmidev/data
+    chown system system /sys/class/input/input0/readconfig
+    chown system system /sys/class/input/input0/0dbutton
+    chown system system /sys/class/input/input0/full_pm_cycle
+    chown system system /sys/class/input/input0/configarea
+    chown system system /sys/class/input/input0/rmidev/length
+    chown system system /sys/class/input/input0/doreflash
+    chown system system /sys/class/input/input0/writeconfig
 
     chown system system /dev/rmi0
 
@@ -220,9 +241,9 @@ on post-fs-data
    mkdir /tombstones/mdm2 0771 system system
 
     # NFC porting
-    setprop ro.nfc.port "I2C"
-    chmod 0600 /dev/pn544
-    chown nfc nfc /dev/pn544
+    #setprop ro.nfc.port "I2C"
+    #chmod 0600 /dev/pn544
+    #chown nfc nfc /dev/pn544
 
     chown root radio /sys/module/pm8921_charger/parameters/call_state
     chmod 0660 /sys/module/pm8921_charger/parameters/call_state
@@ -266,23 +287,23 @@ service time_daemon /system/bin/time_daemon
    user root
    group root
 
-service ta_qmi_service /system/bin/ta_qmi_service
-    class late_start
-    user root
-    disabled
+#service ta_qmi_service /system/bin/ta_qmi_service
+#    class late_start
+#    user root
+#    disabled
 
-service tad /sbin/tad_static /dev/block/mmcblk0 1,16
-    class trimarea
-    user root
-    group root 	
-    socket tad stream 666 system system
-    class core
-    seclabel u:r:tad_static:s0
+#service tad /sbin/tad_static /dev/block/mmcblk0 1,16
+#    class trimarea
+#    user root
+#    group root 	
+#    socket tad stream 666 system system
+#    class core
+#    seclabel u:r:tad_static:s0
 
-service updatemiscta /system/bin/updatemiscta
-    class main
-    user root
-    oneshot
+#service updatemiscta /system/bin/updatemiscta
+#    class main
+#    user root
+#    oneshot
 
 service wcnss-service /system/bin/wcnss_service
     class late_start

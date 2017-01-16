@@ -9,4 +9,5 @@ PRODUCT_COPY_FILES += \
 
 # Lights package
 PRODUCT_PACKAGES += \
-    lights.msm8960
+    lights.msm8960 \
+    sensors.msm8960
