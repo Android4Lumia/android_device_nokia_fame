@@ -1,4 +1,1 @@
 allow mediaserver socket_device:sock_file write;
-
-# For text relocations in /system/vendor/lib/libmmjpeg.so
-allow mediaserver system_file:file execmod;
