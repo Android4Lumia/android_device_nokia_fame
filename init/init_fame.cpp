@@ -131,9 +131,7 @@ void vendor_load_properties()
         mount("", "/", "", MS_REMOUNT|MS_RDONLY, NULL);
     }
 
-    property_get("ro.build.fingerprint", fingerprint);
-    property_set("ro.build.description", fingerprint);
+    property_set("ro.build.description", property_get("ro.build.fingerprint").c_str());
 
-    property_get("ro.product.device", device);
-    ERROR("setting build properties for %s device\n", device);
+    ERROR("setting build properties for %s device\n", property_get("ro.product.device").c_str());
 }

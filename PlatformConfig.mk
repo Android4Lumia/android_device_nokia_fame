@@ -67,6 +67,7 @@ TW_THEME := portrait_mdpi
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
+TW_USE_TOOLBOX := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
