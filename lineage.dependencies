@@ -8,7 +8,7 @@
     "target_path": "device/qcom/common"
   },
   {
-    "repository": "android_kernel_sony_msm8x27",
-    "target_path": "kernel/sony/msm8x27"
+    "repository": "android_kernel_nokia_msm8x27",
+    "target_path": "kernel/nokia/msm8x27"
   }
 ]
