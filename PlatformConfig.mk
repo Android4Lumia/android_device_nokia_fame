@@ -83,6 +83,7 @@ BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
 
 # FM radio
 QCOM_FM_ENABLED := true
+BOARD_HAVE_QCOM_FM := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
