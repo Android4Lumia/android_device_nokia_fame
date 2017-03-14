@@ -6,7 +6,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libargs=-d[SPACE]/dev/smd0 \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
-    ro.telephony.ril_class=SonyRIL
+    ro.telephony.ril_class=NokiaRIL
 
 # Radio properties
 PRODUCT_PROPERTY_OVERRIDES += \
