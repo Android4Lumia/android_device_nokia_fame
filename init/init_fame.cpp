@@ -52,84 +52,84 @@ void ds_properties();
 
 void ds_properties()
 {
-        property_set("persist.radio.multisim.config", "dsds");
-        property_set("persist.radio.dont_use_dsd", "true");
+    property_set("persist.radio.multisim.config", "dsds");
+    property_set("persist.radio.dont_use_dsd", "true");
 }
 
 void vendor_load_properties()
 {
-	int ret = 0, rdonly = 0;
-	FILE *fp;
+    int ret = 0, rdonly = 0;
+    FILE *fp;
     char device[PROP_VALUE_MAX];
     char fingerprint[PROP_VALUE_MAX];
     char modelnumber[32];
 
-	if (access(DPP_MOUNTPOINT, F_OK) == -1) {
-		ERROR("DPP mount point not found, creating it\n");
-		ret = make_dir(DPP_MOUNTPOINT, 0400);
-		if (ret) {
-			ERROR("cannot create DPP mount point, trying to remount rootfs as RW\n");
-			if (mount("", "/", "", MS_REMOUNT, NULL) == 0) {
-				ERROR("remount done\n");
-				rdonly = 1;
-				ret = make_dir(DPP_MOUNTPOINT, 0400);
-			}
-		}
-	}
+    if (access(DPP_MOUNTPOINT, F_OK) == -1) {
+        ERROR("DPP mount point not found, creating it\n");
+        ret = make_dir(DPP_MOUNTPOINT, 0400);
+        if (ret) {
+            ERROR("cannot create DPP mount point, trying to remount rootfs as RW\n");
+            if (mount("", "/", "", MS_REMOUNT, NULL) == 0) {
+                ERROR("remount done\n");
+                rdonly = 1;
+                ret = make_dir(DPP_MOUNTPOINT, 0400);
+            }
+        }
+    }
 
-	if (!ret) {
-		ERROR("mounting DPP\n");
-		if (mount(DPP_PARTITION, DPP_MOUNTPOINT, DPP_FS, DPP_FLAGS, DPP_DATA) == 0) {
-			ERROR("DPP mounted\n");
-			if (access(PRODUCT_DAT, R_OK) == 0) {
-				if ((fp = fopen(PRODUCT_DAT, "r")) != NULL) {
-					if (fgets(modelnumber, sizeof(modelnumber), fp) != NULL) {
-						if (strcmp(modelnumber, "TYPE:RM-913\n") == 0) {
-							property_set("ro.product.device", "fame_cmcc");
-							property_set("ro.product.model", "fame_cmcc");
-							property_set("ro.product.name", "Lumia 520 China");
-						}
-						if (strcmp(modelnumber, "TYPE:RM-914\n") == 0) {
-							property_set("ro.product.device", "fame");
-							property_set("ro.product.model", "fame");
-							property_set("ro.product.name", "Lumia 520");
-						}
-						if (strcmp(modelnumber, "TYPE:RM-915\n") == 0) {
-							property_set("ro.product.device", "fame_lta");
-							property_set("ro.product.model", "fame_lta");
-							property_set("ro.product.name", "Lumia 520");
-						}
-						if (strcmp(modelnumber, "TYPE:RM-917\n") == 0) {
-							property_set("ro.product.device", "fame_tmo");
-							property_set("ro.product.model", "fame_tmo");
-							property_set("ro.product.name", "Lumia 521");
-						}
-						if (strcmp(modelnumber, "TYPE:RM-997\n") == 0) {
-							property_set("ro.product.device", "glee_cmcc");
-							property_set("ro.product.model", "glee_cmcc");
-							property_set("ro.product.name", "Lumia 526");
-						}
-						if (strcmp(modelnumber, "TYPE:RM-998\n") == 0) {
-							property_set("ro.product.device", "glee");
-							property_set("ro.product.model", "glee");
-							property_set("ro.product.name", "Lumia 525");
-						}
-					}
-					fclose(fp);
-				}
-			}
-			else {
-				ERROR("cannot access product.dat\n");
-			}
-		}
-		else {
-			ERROR("mounting DPP failed\n");
-		}
-	}
+    if (!ret) {
+        ERROR("mounting DPP\n");
+    if (mount(DPP_PARTITION, DPP_MOUNTPOINT, DPP_FS, DPP_FLAGS, DPP_DATA) == 0) {
+            ERROR("DPP mounted\n");
+            if (access(PRODUCT_DAT, R_OK) == 0) {
+                if ((fp = fopen(PRODUCT_DAT, "r")) != NULL) {
+                    if (fgets(modelnumber, sizeof(modelnumber), fp) != NULL) {
+                        if (strcmp(modelnumber, "TYPE:RM-913\n") == 0) {
+                            property_set("ro.product.device", "fame_cmcc");
+                            property_set("ro.product.name",   "fame_cmcc");
+                            property_set("ro.product.model",  "Lumia 520 (RM-913)");
+                        }
+                        if (strcmp(modelnumber, "TYPE:RM-914\n") == 0) {
+                            property_set("ro.product.device", "fame");
+                            property_set("ro.product.name",   "fame");
+                            property_set("ro.product.model",  "Lumia 520 (RM-914)");
+                        }
+                        if (strcmp(modelnumber, "TYPE:RM-915\n") == 0) {
+                            property_set("ro.product.device", "fame_lta");
+                            property_set("ro.product.name",   "fame_lta");
+                            property_set("ro.product.model",  "Lumia 520 (RM-915)");
+                        }
+                        if (strcmp(modelnumber, "TYPE:RM-917\n") == 0) {
+                            property_set("ro.product.device", "fame_tmo");
+                            property_set("ro.product.name",   "fame_tmo");
+                            property_set("ro.product.model",  "Lumia 521 (RM-917)");
+                        }
+                        if (strcmp(modelnumber, "TYPE:RM-997\n") == 0) {
+                            property_set("ro.product.device", "glee_cmcc");
+                            property_set("ro.product.name",   "glee_cmcc");
+                            property_set("ro.product.model",  "Lumia 526 (RM-997)");
+                        }
+                        if (strcmp(modelnumber, "TYPE:RM-998\n") == 0) {
+                            property_set("ro.product.device", "glee");
+                            property_set("ro.product.name",   "glee");
+                            property_set("ro.product.model",  "Lumia 525 (RM-998)");
+                        }
+                    }
+                    fclose(fp);
+                }
+            }
+            else {
+                ERROR("cannot access product.dat\n");
+            }
+        }
+        else {
+            ERROR("mounting DPP failed\n");
+        }
+    }
 
-	if (rdonly == 1) {
-		mount("", "/", "", MS_REMOUNT|MS_RDONLY, NULL);
-	}
+    if (rdonly == 1) {
+        mount("", "/", "", MS_REMOUNT|MS_RDONLY, NULL);
+    }
 
     property_get("ro.build.fingerprint", fingerprint);
     property_set("ro.build.description", fingerprint);
