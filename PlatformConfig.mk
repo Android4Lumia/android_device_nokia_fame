@@ -68,3 +68,84 @@ TW_NO_USB_STORAGE := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
+
+# CM Hardware
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
+
+# FM radio
+QCOM_FM_ENABLED := true
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+
+# Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+# Audio configurations
+BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
+BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
+QCOM_CSDCLIENT_ENABLED := false
+QCOM_USBAUDIO_ENABLED := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
+
+# Display
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
+TARGET_USES_C2D_COMPOSITION := true
+
+# Enables Adreno RS driver
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+# Ion
+TARGET_USES_ION := true
+
+# Shader cache config options
+# Maximum size of the  GLES Shaders that can be cached for reuse.
+# Increase the size if shaders of size greater than 12KB are used.
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+
+# Maximum GLES shader cache size for each app to store the compiled shader
+# binaries. Decrease the size if RAM or Flash Storage size is a limitation
+# of the device.
+MAX_EGL_CACHE_SIZE := 2048*1024
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+
+# Power HAL
+CM_POWERHAL_EXTENSION := qcom
+TARGET_POWERHAL_VARIANT := qcom
+
+# WiFi
+BOARD_HAS_QCOM_WLAN              := true
+BOARD_WLAN_DEVICE                := qcwcn
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME          := "wlan"
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+
+# Qualcomm sepolicies
+include device/qcom/sepolicy/sepolicy.mk
+
+# Device sepolicies
+BOARD_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy
