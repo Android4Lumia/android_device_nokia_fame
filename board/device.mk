@@ -1,11 +1,6 @@
-PRODUCT_DEVICE := fame
-PRODUCT_NAME := cm_fame
-PRODUCT_BRAND := Nokia
-PRODUCT_MANUFACTURER := Nokia
-PRODUCT_MODEL := fame
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc
+TARGET_OTA_ASSERT_DEVICE := zeal_row,zeal_cmcc,fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc
 
 # Device init
 TARGET_INIT_VENDOR_LIB := libinit_fame
