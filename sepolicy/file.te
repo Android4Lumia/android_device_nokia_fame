@@ -1,7 +1,5 @@
 type vibeamp_sysfs, sysfs_type, file_type;
 type kcal_sysfs, fs_type, sysfs_type;
 
-type tad_socket, file_type;
-
 type led_deamon_data_file, file_type;
 type sensord_data_file, file_type;

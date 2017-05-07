@@ -23,8 +23,8 @@ import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
 
-public class SonyRIL extends RIL implements CommandsInterface {
-    public SonyRIL(Context context, int preferredNetworkType, int cdmaSubscription, Integer instanceId) {
+public class NokiaRIL extends RIL implements CommandsInterface {
+    public NokiaRIL(Context context, int preferredNetworkType, int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
 
     }

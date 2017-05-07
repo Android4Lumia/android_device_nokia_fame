@@ -28,6 +28,8 @@ TARGET_CPU_VARIANT := krait
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_CMDLINE := panic=3 console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+# this is only temporary, until the device tree is finalized
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Kernel properties
@@ -65,6 +67,7 @@ TW_THEME := portrait_mdpi
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
+TW_USE_TOOLBOX := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
@@ -81,6 +84,7 @@ BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
 
 # FM radio
 QCOM_FM_ENABLED := true
+BOARD_HAVE_QCOM_FM := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -92,9 +96,11 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 BOARD_USES_FLUENCE_INCALL := true
-BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_USES_LEGACY_ALSA_AUDIO := false
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
-BOARD_USES_SEPERATED_VOICE_SPEAKER_MIC := true
+BOARD_USES_SEPERATED_VOICE_SPEAKER := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 QCOM_CSDCLIENT_ENABLED := false
 QCOM_USBAUDIO_ENABLED := true
 

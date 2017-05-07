@@ -83,7 +83,6 @@ vendor/lib/libqti-perfd-client.so
 # QMI
 bin/irsc_util
 bin/qmuxd
-lib/lib_dlb_msd.so
 lib/libidl.so
 lib/libqcci_legacy.so
 lib/libqmi_client_qmux.so
