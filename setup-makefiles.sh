@@ -18,8 +18,8 @@
 set -e
 
 # Required!
-DEVICE=nicki
-VENDOR=sony
+DEVICE=fame
+VENDOR=nokia
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -40,8 +40,8 @@ setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 # Copyright headers and guards
 write_headers
 
-# Sony/Device specific blobs
-write_makefiles "$MY_DIR"/proprietary-files-sony.txt
+# Nokia/Device specific blobs
+write_makefiles "$MY_DIR"/proprietary-files-nokia.txt
 
 # Qualcomm BSP blobs - we put a conditional around here
 # in case the BSP is actually being built

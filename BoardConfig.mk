@@ -165,3 +165,6 @@ include device/qcom/sepolicy/sepolicy.mk
 # Device sepolicies
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
+
+# Board device vendor
+-include vendor/nokia/fame/BoardConfigVendor.mk

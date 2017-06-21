@@ -31,4 +31,4 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-512-dalvik-
 include $(LOCAL_PATH)/product/*.mk
 
 # Vendor product configurations
-$(call inherit-product, vendor/sony/nicki/nicki-vendor.mk)
+$(call inherit-product, vendor/nokia/fame/fame-vendor.mk)
