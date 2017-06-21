@@ -17,8 +17,8 @@
 
 set -e
 
-DEVICE=nicki
-VENDOR=sony
+DEVICE=fame
+VENDOR=nokia
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -53,6 +53,6 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC"
-extract "$MY_DIR"/proprietary-files-sony.txt "$SRC"
+extract "$MY_DIR"/proprietary-files-nokia.txt "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh

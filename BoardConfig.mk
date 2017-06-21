@@ -25,4 +25,4 @@ include $(DEVICE_PATH)/PlatformConfig.mk
 include $(DEVICE_PATH)/board/*.mk
 
 # Board device vendor
--include vendor/sony/nicki/BoardConfigVendor.mk
+-include vendor/nokia/fame/BoardConfigVendor.mk
