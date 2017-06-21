@@ -132,6 +132,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # ART properties
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
@@ -275,7 +278,6 @@ PRODUCT_PACKAGES += \
 # Thermal configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermald-8930.conf:system/etc/thermald-8930.conf
-PRODUCT_COPY_FILES += device/nokia/fame/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # WiFi WCNSS configurations
 PRODUCT_COPY_FILES += \
