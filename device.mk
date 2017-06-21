@@ -139,7 +139,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
