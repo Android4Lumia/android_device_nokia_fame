@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2013-2016 The CyanogenMod Project
+#               2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,21 +18,16 @@
 # Board device path
 DEVICE_PATH := device/nokia/fame
 
+# OTA assert
+TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo
+
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
-# OTA assert
-TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc,nicki
-
-# Device init
-TARGET_INIT_VENDOR_LIB := libinit_fame
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_fame.cpp
-
-# Device unified
-TARGET_UNIFIED_DEVICE := true
-
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
+TARGET_BOOTLOADER_BOARD_NAME := qcom
+BOARD_USES_QCOM_HARDWARE := true
 
 # Architecture
 TARGET_ARCH := arm
@@ -40,69 +36,13 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
-# Kernel informations
+# Kernel source / bootimg info
+TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
+TARGET_KERNEL_CONFIG := cyanogenmod_fame_defconfig
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_CMDLINE := panic=3 console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
-
-# Kernel properties
-TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
-TARGET_KERNEL_CONFIG := lineage_fame_defconfig
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := qcom
-
-# Vendor platform
-BOARD_VENDOR := nokia
-BOARD_VENDOR_PLATFORM := fame
-
-# Images
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-
-# Partitions informations
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1258291200
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 6149881344
-#BOARD_USERDATAIMAGE_PARTITION_SIZE := 2235547136
-
-# Partitions types
-TARGET_USERIMAGES_USE_EXT4 := true
-
-# Partitions blocks
-BOARD_FLASH_BLOCK_SIZE := 131072
-
-# Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
-RECOVERY_VARIANT := twrp
-TW_THEME := portrait_mdpi
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_NO_USB_STORAGE := true
-
-# RIL
-BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
-
-# CM Hardware
-BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
-# Healthd
-BOARD_CHARGER_ENABLE_SUSPEND := true
-BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
-
-# FM radio
-QCOM_FM_ENABLED := true
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Audio configurations
 BOARD_USES_ALSA_AUDIO := true
@@ -118,33 +58,73 @@ QCOM_USBAUDIO_ENABLED := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+
+# Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+# Device init
+TARGET_INIT_VENDOR_LIB := libinit_fame
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_fame.cpp
+TARGET_UNIFIED_DEVICE := true
 
 # Display
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_USES_C2D_COMPOSITION := true
-
-# Enables Adreno RS driver
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-# Ion
 TARGET_USES_ION := true
-
-# Shader cache config options
-# Maximum size of the  GLES Shaders that can be cached for reuse.
-# Increase the size if shaders of size greater than 12KB are used.
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
-
-# Maximum GLES shader cache size for each app to store the compiled shader
-# binaries. Decrease the size if RAM or Flash Storage size is a limitation
-# of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
+# FM radio
+QCOM_FM_ENABLED := true
+
+# Hardware Class
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
+
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Partitions informations
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1258291200
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 6149881344
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 2235547136
+BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Power HAL
 CM_POWERHAL_EXTENSION := qcom
 TARGET_POWERHAL_VARIANT := qcom
+
+# Recovery
+# TWRP configs only get set if we're building TWRP
+ifeq ($(RECOVERY_VARIANT),twrp)
+RECOVERY_VARIANT := twrp
+TW_THEME := portrait_mdpi
+RECOVERY_SDCARD_ON_DATA := true
+TW_NO_USB_STORAGE := true
+endif
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
+
+# RIL
+BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
+
+# SELinux Policy
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy
+
+# Vendor
+BOARD_VENDOR := nokia
+BOARD_VENDOR_PLATFORM := fame
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
 
 # WiFi
 BOARD_HAS_QCOM_WLAN              := true
@@ -159,12 +139,5 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
-# Qualcomm sepolicies
-include device/qcom/sepolicy/sepolicy.mk
-
-# Device sepolicies
-BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
-
-# Board device vendor
+# vendor config inclusions are always last
 -include vendor/nokia/fame/BoardConfigVendor.mk
