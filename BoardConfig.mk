@@ -38,7 +38,7 @@ TARGET_CPU_VARIANT := krait
 
 # Kernel source / bootimg info
 TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
-TARGET_KERNEL_CONFIG := cyanogenmod_fame_defconfig
+TARGET_KERNEL_CONFIG := lineage_fame_defconfig
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_CMDLINE := panic=3 \
