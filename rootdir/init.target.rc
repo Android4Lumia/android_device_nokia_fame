@@ -52,13 +52,6 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
 
-    # TA support
-    #class_start trimarea
-    #start tad_static
-    #exec /system/bin/taimport
-    
-    #start ta_qmi_service
-
 on post-fs
     mkdir /dev/socket/suntory 0755 system system
 
@@ -286,24 +279,6 @@ service time_daemon /system/bin/time_daemon
    class late_start
    user root
    group root
-
-#service ta_qmi_service /system/bin/ta_qmi_service
-#    class late_start
-#    user root
-#    disabled
-
-#service tad /sbin/tad_static /dev/block/mmcblk0 1,16
-#    class trimarea
-#    user root
-#    group root 	
-#    socket tad stream 666 system system
-#    class core
-#    seclabel u:r:tad_static:s0
-
-#service updatemiscta /system/bin/updatemiscta
-#    class main
-#    user root
-#    oneshot
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
