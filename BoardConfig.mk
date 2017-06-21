@@ -113,6 +113,7 @@ RECOVERY_VARIANT := twrp
 TW_THEME := portrait_mdpi
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
+TW_USE_TOOLBOX := true
 endif
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
