@@ -88,7 +88,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 # FM radio
 QCOM_FM_ENABLED := true
-
+BOARD_HAVE_QCOM_FM := true
 # Hardware Class
 BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
 
