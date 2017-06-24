@@ -10,10 +10,11 @@ CPU     | 1.0GHz Dual-Core MSM8227
 GPU     | Adreno 305
 Memory  | 512MB RAM
 Shipped OS | Windows Phone 8.0
-Storage | 8GB
-Battery | 1430  mAh
-Display | 4.0" 800 x 480 px
-Camera  | 5MPx
+Storage | 8GB (Samsung/Hynix)
+Battery | 1430  mAh BL-5J
+Touch   | Synaptics
+Display | 4.0" 800 x 480 px (Orise-based)
+Camera  | 5MPx SMIA75 (520/525/1320/X2)
 
 Variants
 =============
