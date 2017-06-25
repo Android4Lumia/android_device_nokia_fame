@@ -118,7 +118,6 @@ TARGET_POWERHAL_VARIANT := qcom
 # Recovery
 # TWRP configs only get set if we're building TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
-RECOVERY_VARIANT := twrp
 TW_THEME := portrait_mdpi
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
