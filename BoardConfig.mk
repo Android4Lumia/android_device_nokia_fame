@@ -39,6 +39,7 @@ TARGET_CPU_VARIANT := krait
 # Kernel source / bootimg info
 TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
 TARGET_KERNEL_CONFIG := lineage_fame_defconfig
+BOARD_CUSTOM_BOOTIMG_MK := device/nokia/fame/boot/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_CMDLINE := panic=3 \
@@ -52,7 +53,6 @@ ifeq ($(TARGET_BUILD_VARIANT),eng)
 # set selinux permissive if it's an eng build
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 endif
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Audio configurations
 BOARD_USES_ALSA_AUDIO := true

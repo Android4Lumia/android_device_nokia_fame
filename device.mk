@@ -160,6 +160,10 @@ PRODUCT_PACKAGES += \
     sensors.msm8960
 
 # Logo
+# There is a weird hack we have to do because certian stuff in root gets copied over top of 
+# recovery/root upon ramdisk generation, which makes it so it automatically uses the same
+# initlogo for everything (even if we copy the proper initlogo to recovery/root), and 
+# that can be found in boot/mkbootimg.mk.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/logo/initlogo.rle:root/initlogo.rle
 
