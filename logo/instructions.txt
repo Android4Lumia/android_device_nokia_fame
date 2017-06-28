@@ -1,0 +1,13 @@
+Prerequisites:
+ - whole source tree must be downloaded
+ - rgb2565 must be built 
+   - (from the tree root, "make rgb2565" and copy the resulting binary to somewhere in your $PATH)
+   - (additionally, be sure that the lib64 directory in out/host/linux-x86 is copied to one level above wherever you put your rgb2565 binary)
+ - imagemagick must be installed (sudo apt install imagemagick)
+
+Process:
+ - Create the picture you want as your initlogo (with dimensions 480 x 800, save it as reference.bmp)
+ - run the command "convert reference.bmp reference.png"
+ - run the command "convert -depth 8 -size 480x800 reference.png rgb:initlogo.raw"
+ - run the command "rgb2565 -rle < initlogo.raw > initlogo.rle"
+ - from the tree root, run "mka bootimage" after lunching fame, and boot the resulting image on your device
