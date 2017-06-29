@@ -58,6 +58,8 @@ on post-fs
 on boot
     start qcamerasvr
 
+    write /proc/sys/vm/swappiness 100
+
     chown system system /sys/class/backlight/msmfb_bl0/brightness
     chown system system /sys/class/backlight/msmfb_bl0/max_brightness
     chmod 0600 /sys/class/backlight/msmfb_bl0/brightness
