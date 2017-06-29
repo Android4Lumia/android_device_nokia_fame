@@ -19,7 +19,7 @@
 DEVICE_PATH := device/nokia/fame
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo
+TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc
 
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
@@ -78,7 +78,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Device init
 TARGET_INIT_VENDOR_LIB := libinit_fame
 TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_fame.cpp
-TARGET_UNIFIED_DEVICE := true
 
 # Display
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
