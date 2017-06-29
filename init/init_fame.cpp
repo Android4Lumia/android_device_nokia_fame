@@ -85,34 +85,34 @@ void vendor_load_properties()
                 if ((fp = fopen(PRODUCT_DAT, "r")) != NULL) {
                     if (fgets(modelnumber, sizeof(modelnumber), fp) != NULL) {
                         if (strcmp(modelnumber, "TYPE:RM-913\n") == 0) {
-                            property_set("ro.product.device", "fame_cmcc");
-                            property_set("ro.product.name",   "fame_cmcc");
-                            property_set("ro.product.model",  "Lumia 520 (RM-913)");
+                            property_override("ro.product.device", "fame_cmcc");
+                            property_override("ro.product.name",   "lineage_fame_cmcc");
+                            property_override("ro.product.model",  "Lumia 520 (RM-913)");
                         }
                         if (strcmp(modelnumber, "TYPE:RM-914\n") == 0) {
-                            property_set("ro.product.device", "fame");
-                            property_set("ro.product.name",   "fame");
-                            property_set("ro.product.model",  "Lumia 520 (RM-914)");
+                            property_override("ro.product.device", "fame");
+                            property_override("ro.product.name",   "lineage_fame");
+                            property_override("ro.product.model",  "Lumia 520 (RM-914)");
                         }
                         if (strcmp(modelnumber, "TYPE:RM-915\n") == 0) {
-                            property_set("ro.product.device", "fame_lta");
-                            property_set("ro.product.name",   "fame_lta");
-                            property_set("ro.product.model",  "Lumia 520 (RM-915)");
+                            property_override("ro.product.device", "fame_lta");
+                            property_override("ro.product.name",   "lineage_fame_lta");
+                            property_override("ro.product.model",  "Lumia 520 (RM-915)");
                         }
                         if (strcmp(modelnumber, "TYPE:RM-917\n") == 0) {
-                            property_set("ro.product.device", "fame_tmo");
-                            property_set("ro.product.name",   "fame_tmo");
-                            property_set("ro.product.model",  "Lumia 521 (RM-917)");
+                            property_override("ro.product.device", "fame_tmo");
+                            property_override("ro.product.name",   "lineage_fame_tmo");
+                            property_override("ro.product.model",  "Lumia 521 (RM-917)");
                         }
                         if (strcmp(modelnumber, "TYPE:RM-997\n") == 0) {
-                            property_set("ro.product.device", "glee_cmcc");
-                            property_set("ro.product.name",   "glee_cmcc");
-                            property_set("ro.product.model",  "Lumia 526 (RM-997)");
+                            property_override("ro.product.device", "glee_cmcc");
+                            property_override("ro.product.name",   "lineage_glee_cmcc");
+                            property_override("ro.product.model",  "Lumia 526 (RM-997)");
                         }
                         if (strcmp(modelnumber, "TYPE:RM-998\n") == 0) {
-                            property_set("ro.product.device", "glee");
-                            property_set("ro.product.name",   "glee");
-                            property_set("ro.product.model",  "Lumia 525 (RM-998)");
+                            property_override("ro.product.device", "glee");
+                            property_override("ro.product.name",   "lineage_glee");
+                            property_override("ro.product.model",  "Lumia 525 (RM-998)");
                         }
                     }
                     fclose(fp);
@@ -124,6 +124,9 @@ void vendor_load_properties()
         }
         else {
             ERROR("mounting DPP failed\n");
+            property_override("ro.product.device", "fame");
+            property_override("ro.product.name",   "lineage_fame");
+            property_override("ro.product.model",  "Lumia");
         }
     }
 
