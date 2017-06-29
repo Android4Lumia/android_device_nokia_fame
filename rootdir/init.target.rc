@@ -56,7 +56,9 @@ on post-fs
     mkdir /dev/socket/suntory 0755 system system
 
 on boot
-   start qcamerasvr
+    start qcamerasvr
+
+    write /proc/sys/vm/swappiness 100
 
     chown system system /sys/class/backlight/msmfb_bl0/brightness
     chown system system /sys/class/backlight/msmfb_bl0/max_brightness
