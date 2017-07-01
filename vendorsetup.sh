@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_fame-eng
-add_lunch_combo cm_fame-userdebug
+add_lunch_combo lineage_fame-eng
+add_lunch_combo lineage_fame-userdebug

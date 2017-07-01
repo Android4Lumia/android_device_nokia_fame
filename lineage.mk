@@ -26,7 +26,7 @@ TARGET_SCREEN_WIDTH := 480
 
 # Device identifications
 PRODUCT_DEVICE := fame
-PRODUCT_NAME := cm_fame
+PRODUCT_NAME := lineage_fame
 PRODUCT_BRAND := Nokia
 PRODUCT_MANUFACTURER := Nokia
 PRODUCT_MODEL := fame
