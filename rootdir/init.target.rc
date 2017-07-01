@@ -56,7 +56,7 @@ on post-fs
     mkdir /dev/socket/suntory 0755 system system
 
 on boot
-   start qcamerasvr
+    start qcamerasvr
 
     chown system system /sys/class/backlight/msmfb_bl0/brightness
     chown system system /sys/class/backlight/msmfb_bl0/max_brightness
@@ -226,12 +226,12 @@ on boot
     restorecon /sys/class/graphics/fb0/kcal
 
 on post-fs-data
-   mkdir /tombstones/modem 0771 system system
-   mkdir /tombstones/lpass 0771 system system
-   mkdir /tombstones/wcnss 0771 system system
-   mkdir /tombstones/dsps 0771 system system
-   mkdir /tombstones/mdm 0771 system system
-   mkdir /tombstones/mdm2 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+    mkdir /tombstones/mdm2 0771 system system
 
     # NFC porting
     #setprop ro.nfc.port "I2C"
@@ -256,29 +256,29 @@ service sensord /system/bin/sensord
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-        class late_start
-        user camera
-        group camera system inet input graphics net_bt_stack
+    class late_start
+    user camera
+    group camera system inet input graphics net_bt_stack
 
 service thermald /system/bin/thermald
-   class main
-   user root
-   group root
+    class main
+    user root
+    group root
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
-   class main
-   user root
-   disabled
+    class main
+    user root
+    disabled
 
 service qseecomd /system/bin/qseecomd
-   class late_start
-   user system
-   group system
+    class late_start
+    user system
+    group system
 
 service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
+    class late_start
+    user root
+    group root
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
@@ -287,7 +287,7 @@ service wcnss-service /system/bin/wcnss_service
     oneshot
 
 service bbset /system/bin/sh /system/etc/init.qcom.baseband.sh
-     class late_start
-     user root
-     seclabel u:r:qti_init_shell:s0
-     oneshot
+    class late_start
+    user root
+    seclabel u:r:qti_init_shell:s0
+    oneshot
