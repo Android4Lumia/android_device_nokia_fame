@@ -166,12 +166,13 @@ BOARD_SEPOLICY_DIRS += \
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
 
-# TWRP
-RECOVERY_VARIANT := twrp
+# TWRP (optional)
+ifeq ($(RECOVERY_VARIANT),twrp)
 TW_THEME := portrait_mdpi
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
+endif
 
 # Board device vendor
 -include vendor/nokia/fame/BoardConfigVendor.mk

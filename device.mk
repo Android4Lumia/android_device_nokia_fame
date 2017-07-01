@@ -132,8 +132,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
+# TWRP (optional)
+ifeq ($(RECOVERY_VARIANT),twrp)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+endif
 
 # ART properties
 PRODUCT_PROPERTY_OVERRIDES += \
