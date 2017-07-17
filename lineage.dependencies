@@ -6,5 +6,9 @@
   {
     "repository": "android_kernel_nokia_msm8x27",
     "target_path": "kernel/nokia/msm8x27"
+  },
+  {
+    "repository": "android_external_libinit_dpp",
+    "target_path": "external/libinit_dpp"
   }
 ]
