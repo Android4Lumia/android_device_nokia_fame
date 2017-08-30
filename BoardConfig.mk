@@ -17,18 +17,10 @@
 # Board device path
 DEVICE_PATH := device/nokia/fame
 
+-include device/nokia/lumia_8930-common/BoardConfigCommon.mk
+
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
-
-# Platform
-TARGET_BOARD_PLATFORM := msm8960
-
-# Architecture
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := krait
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -40,65 +32,26 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/backlight/msmfb_bl0/brightness
 PRODUCT_DEVICE := fame
-PRODUCT_NAME := cm_fame
-PRODUCT_BRAND := Nokia
-PRODUCT_MANUFACTURER := Nokia
+PRODUCT_NAME := lineage_fame
 PRODUCT_MODEL := fame
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc
-
-# Device init
-TARGET_INIT_VENDOR_LIB := libinit_dpp
-
-# Device unified
-TARGET_UNIFIED_DEVICE := true
+TARGET_OTA_ASSERT_DEVICE := fame_cmcc,fame_lta,fame_row,fame_tmo,glee_cmcc,glee_row
 
 # Partitions informations
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1258291200
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6149881344
-#BOARD_USERDATAIMAGE_PARTITION_SIZE := 2235547136
 
-# Partitions types
-TARGET_USERIMAGES_USE_EXT4 := true
-
-# Partitions blocks
+# Partitions blocks - I'll leave it here for now, maybe we'll need it - NeoH
 BOARD_FLASH_BLOCK_SIZE := 131072
-
-# Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
 # FM radio
 QCOM_FM_ENABLED := true
 
-# CM Hardware
-BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
-# Kernel informations
-BOARD_KERNEL_BASE := 0x80200000
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_CMDLINE := panic=3 console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
-
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/nokia/msm8x27
-TARGET_KERNEL_CONFIG := cyanogenmod_fame_defconfig
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := qcom
+TARGET_KERNEL_CONFIG := lineage_fame_defconfig
 
 # Vendor platform
-BOARD_VENDOR := nokia
 BOARD_VENDOR_PLATFORM := fame
-
-# Images
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
 
 # Audio configurations
 BOARD_USES_ALSA_AUDIO := true
@@ -135,43 +88,8 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-
-# Power HAL
-CM_POWERHAL_EXTENSION := qcom
-TARGET_POWERHAL_VARIANT := qcom
-
-# Qualcomm sepolicies
-include device/qcom/sepolicy/sepolicy.mk
-
-# WiFi
-BOARD_HAS_QCOM_WLAN              := true
-BOARD_WLAN_DEVICE                := qcwcn
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME          := "wlan"
-WIFI_DRIVER_FW_PATH_STA          := "sta"
-WIFI_DRIVER_FW_PATH_AP           := "ap"
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-
-# Device sepolicies
-BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
-
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
-
-# TWRP (optional)
-ifeq ($(RECOVERY_VARIANT),twrp)
-TW_THEME := portrait_mdpi
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_NO_USB_STORAGE := true
-endif
 
 # Board device vendor
 -include vendor/nokia/fame/BoardConfigVendor.mk
