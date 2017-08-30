@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2013-2016 The CyanogenMod Project
+#               2017      The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +15,14 @@
 # limitations under the License.
 #
 
+$(call inherit-product, device/nokia/lumia_8930-common/msm8930.mk)
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Device specific overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-# Product common configurations
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Dalvik heap configurations
 $(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
@@ -165,79 +165,11 @@ PRODUCT_COPY_FILES += \
 
 # Camera permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
-
-# Display QCOM packages
-PRODUCT_PACKAGES += \
-    hwcomposer.msm8960 \
-    gralloc.msm8960 \
-    copybit.msm8960 \
-    memtrack.msm8960
-
-# OpenGL properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196608
-
-# FM packages
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
-
-# GPS permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
-
-# GPS packages
-PRODUCT_PACKAGES += \
-    gps.msm8960 \
-    gps.conf \
-    sap.conf \
-    izat.conf
-
-# Touchscreen permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
-# Media codecs
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
-
-# OMX packages
-PRODUCT_PACKAGES += \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
-    libc2dcolorconvert \
-    libdivxdrmdecrypt \
-    libmm-omxcore \
-    libstagefrighthw
-
-# DRM packages
-PRODUCT_PACKAGES += \
-    com.google.widevine.software.drm
-
-# DRM properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
-
-# Power package
-PRODUCT_PACKAGES += \
-    power.qcom
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml
 
 # QCOM-perf properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
-
-# Telephony permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # RIL properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -255,29 +187,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=0
 
-# Sensors permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
-
 # USB permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
-
-# WiFi permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
-
-# WiFi packages
-PRODUCT_PACKAGES += \
-    dhcpcd.conf \
-    hostapd \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
-    libwpa_client \
-    wcnss_service \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 # Thermal configuration
 PRODUCT_COPY_FILES += \
@@ -286,7 +198,8 @@ PRODUCT_COPY_FILES += \
 # WiFi WCNSS configurations
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:root/persist/WCNSS_qcom_wlan_nv.bin
 
 # WPA supplicant configurations
 PRODUCT_COPY_FILES += \
@@ -298,12 +211,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny
-
-# WiFi properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.disableWifiApFirmwareReload=true \
-    wifi.interface=wlan0 \
-    wlan.driver.ath=0
 
 # Vendor product configurations
 $(call inherit-product, vendor/nokia/fame/fame-vendor.mk)
