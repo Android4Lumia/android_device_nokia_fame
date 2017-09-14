@@ -1,6 +1,6 @@
 Nokia Lumia 520
 =============
-This branch is for building CyanogenMod 13.0 (or Android Marshmallow 6.0 AOSP based roms) ROMs.
+This branch is for building LineageOS 13.0 (or Android Marshmallow 6.0 AOSP based roms) ROMs.
 
 <img src="http://i-cdn.phonearena.com/images/phones/39806-xlarge/Nokia-Lumia-520-2.jpg" width="350" height="350" />
 
@@ -23,9 +23,9 @@ This repository contains support for the 520-series Nokia Lumia devices, includi
 Device Type  | Codename  | Device Model
 :------------|:----------|:-------------
 RM-913       | fame_cmmc | Lumia 520
-RM-914       | fame      | Lumia 520
+RM-914       | fame_row  | Lumia 520
 RM-915       | fame_lta  | Lumia 520
 RM-917       | fame_tmo  | Lumia 521
 RM-997       | glee_cmmc | Lumia 526
-RM-998       | glee      | Lumia 525
+RM-998       | glee_row  | Lumia 525
 
