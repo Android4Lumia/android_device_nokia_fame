@@ -91,8 +91,5 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
 
-# LOW RAM
-MALLOC_SVELTE := true
-
 # Board device vendor
 -include vendor/nokia/fame/BoardConfigVendor.mk
