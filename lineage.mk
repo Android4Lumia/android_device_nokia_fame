@@ -15,7 +15,7 @@
 #
 
 # Inherit common CM stuff
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/common_mini_phone.mk)
 
 # Inherit device configurations
 $(call inherit-product, device/nokia/fame/device.mk)
@@ -23,6 +23,7 @@ $(call inherit-product, device/nokia/fame/device.mk)
 # Device display
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Device identifications
 PRODUCT_DEVICE := fame

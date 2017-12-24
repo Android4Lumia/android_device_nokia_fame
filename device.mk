@@ -25,7 +25,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Dalvik heap configurations
-$(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-dalvik-heap.mk)
 
 # Audio configurations
 PRODUCT_COPY_FILES += \
