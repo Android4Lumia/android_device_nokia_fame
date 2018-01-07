@@ -18,13 +18,11 @@ Camera  | 5MPx SMIA75 (520/525/1320/X2)
 
 Variants
 =============
-This repository contains support for the 520-series Nokia Lumia devices, including the 520, 521, 525, and 526. All of the variants listed below should work with this.
+This repository contains support for the 520-series Nokia Lumia devices, including the 520 and 521. All of the variants listed below should work with this.
 
 Device Type  | Codename  | Device Model
 :------------|:----------|:-------------
 RM-913       | fame_cmmc | Lumia 520
-RM-914       | fame      | Lumia 520
+RM-914       | fame_row  | Lumia 520
 RM-915       | fame_lta  | Lumia 520
 RM-917       | fame_tmo  | Lumia 521
-RM-997       | glee_cmmc | Lumia 526
-RM-998       | glee      | Lumia 525

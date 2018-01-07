@@ -23,7 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Dalvik/Art configurations
-$(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-dalvik-heap.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
 
@@ -107,11 +107,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 
 # Google Play Store identifier
-PRODUCT_GMS_CLIENTID_BASE := android-google
+PRODUCT_GMS_CLIENTID_BASE := android-nokia
 
 # GPS config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=0 \
     ro.qc.sdk.izat.premium_enabled=1 \
@@ -208,6 +209,7 @@ PRODUCT_COPY_FILES += \
 # PowerHAL
 PRODUCT_PACKAGES += \
     power.qcom
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
@@ -229,6 +231,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
@@ -251,6 +254,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.disableWifiApFirmwareReload=true \
     wifi.interface=wlan0 \
     wlan.driver.ath=0
+
+# Low RAM options -For the really low-memory devices disable JIT by setting cache size to zero
+# Low memory device - Disable atlas services on low-ram targets, Enable smooth streaming 
+PRODUCT_PROPERTY_OVERRIDES += \
+     ro.config.low_ram=true \
+     dalvik.vm.jit.codecachesize=0 \
+     config.disable_atlas=true \
+     mm.enable.smoothstreaming=true \
+     ro.sys.fw.bg_apps_limit=5
 
 # Vendor product configurations
 $(call inherit-product, vendor/nokia/fame/fame-vendor.mk)

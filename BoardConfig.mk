@@ -19,7 +19,7 @@
 DEVICE_PATH := device/nokia/fame
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := fame,fame_cmcc,fame_lta,fame_tmo,glee,glee_cmcc
+TARGET_OTA_ASSERT_DEVICE := fame,fame_row,fame_cmcc,fame_lta,fame_tmo
 
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
@@ -49,6 +49,7 @@ BOARD_KERNEL_CMDLINE := panic=3 \
     msm_rtb.filter=0x3F \
     ehci-hcd.park=3 \
     androidboot.bootdevice=msm_sdcc.1
+
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 # set selinux permissive if it's an eng build
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -131,6 +132,9 @@ BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril/
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
+
+# LOW RAM
+MALLOC_SVELTE := true
 
 # Vendor
 BOARD_VENDOR := nokia
