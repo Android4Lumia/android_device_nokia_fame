@@ -13,6 +13,6 @@
 /dev/block/bootdevice/by-name/cache          /cache       ext4    nosuid,nodev,barrier=1                      wait,check
 
 # zRAM
-/dev/block/zram0                             none         swap    defaults                                    zramsize=25%,zramstreams=4,swapprio=10,notrim
+/dev/block/zram0                             none         swap    defaults                                    zramsize=20%,zramstreams=4,swapprio=10,notrim
 
 /devices/platform/msm_sdcc.3/mmc_host*       auto         auto    defaults                                    voldmanaged=sdcard1:auto,encryptable=userdata
