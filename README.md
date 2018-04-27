@@ -1,6 +1,6 @@
 Nokia Lumia 520
 =============
-This branch is for building LineageOS 13.0 (or Android Marshmallow 6.0 AOSP based roms) ROMs.
+This branch is for building LineageOS 14.1 (or Android Nougat 7.1 AOSP based roms) ROMs.
 
 <img src="http://i-cdn.phonearena.com/images/phones/39806-xlarge/Nokia-Lumia-520-2.jpg" width="350" height="350" />
 
