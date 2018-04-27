@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2011 The Android Open Source Project
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright (C) 2016 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,14 +14,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-<resources>
-    <!-- Whether to enable ETWS settings (Japan) -->
-    <bool name="show_etws_settings">true</bool>
-    <!-- Whether to enable CMAS settings (United States) -->
-    <bool name="show_cmas_settings">true</bool>
-    <!-- Whether to enable channel 50 settings (Brazil) -->
-    <bool name="show_brazil_settings">true</bool>
-    <!-- Whether to enable channel 50 and 60 settings (India) -->
-    <bool name="show_india_settings">true</bool>
+    <!-- Does the device allow updating the recovery. -->
+    <bool name="config_enableRecoveryUpdater">false</bool>
+
 </resources>
