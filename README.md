@@ -29,3 +29,6 @@ RM-917       | fame_tmo  | Lumia 521
 RM-997       | glee_cmmc | Lumia 526
 RM-998       | glee_row  | Lumia 525
 
+Status
+======
+The status of the project can be followed on https://forum.xda-developers.com/nokia-lumia-520
