@@ -1,1 +1,2 @@
 allow untrusted_app storage_stub_file:dir getattr;
+allow untrusted_app baseband_prop:file r_file_perms;

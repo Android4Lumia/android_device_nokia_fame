@@ -1,0 +1,1 @@
+allow zygote baseband_prop:file r_file_perms;
