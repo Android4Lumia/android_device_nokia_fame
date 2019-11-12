@@ -4,3 +4,4 @@ allow system_server sensord_data_file:dir { search write };
 allow system_server sensord_data_file:dir { getattr setattr };
 allow system_server sensord_data_file:fifo_file rw_file_perms;
 allow system_server led_deamon_data_file:fifo_file rw_file_perms;
+allow system_server baseband_prop:file r_file_perms;
